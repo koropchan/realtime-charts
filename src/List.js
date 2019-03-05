@@ -7,11 +7,9 @@ import news from './images/News.png';
 
 
 class List extends Component {
-    render() {
-            function handleClick(e) {
-              e.preventDefault();
-              console.log('The row was clicked.');
-            }
+    
+      render() {
+
       return (
         <div className="container">
             <div className="currency">
@@ -30,7 +28,7 @@ class List extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr onClick={handleClick}>
+                            <tr>
                                 <th scope="row">Bitcoin</th>
                                 <td>Mark</td>
                                 <td>Otto</td>
@@ -68,7 +66,7 @@ class List extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr onClick={handleClick}>
+                            <tr>
                                 <th scope="row">Toronto</th>
                                 <td>Mark</td>
                                 <td>Otto</td>
@@ -106,7 +104,7 @@ class List extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr onClick={handleClick}>
+                            <tr>
                                 <th scope="row">Bitcoin</th>
                                 <td>Mark</td>
                                 <td>Otto</td>
