@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
+    color: rgb(221, 156, 17);
 }
 
 .currency, .weather, .news{
@@ -12,12 +13,35 @@
 }
 
 .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 20%;
     background-color: rgb(52, 75, 97);
     border-bottom: 1px solid #253246;
     box-shadow: 0 1px 0 #495b71 inset;
+    border-radius: 3px;
 }
 
 .body {
     height: 80%;
 }
+
+img {
+    height: 25px;
+    margin-right: 3%;
+}
+
+.text {
+    margin-left: 3%;
+    font-family: 'Laila', serif;
+    text-transform: uppercase;
+}
+
+.table {
+    height: 100%;
+    width: 100%
+}
+.table td {
+    text-align: center;   
+ }
