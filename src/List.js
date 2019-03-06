@@ -7,9 +7,26 @@ import news from './images/News.png';
 
 
 class List extends Component {
-    
-      render() {
+      constructor(props) {
+        super(props);
+        this.state = {
+          data: [],
+        };
+      }
 
+      componentDidMount() {
+
+        var url = 'https://free.currencyconverterapi.com/api/v6/convert?q=USD_CAD,BTC_USD,USD_EUR&compact=ultra&apiKey=95c86d5989f092030892';
+        fetch(url)
+          .then(res => res.json())
+          .then(json => {
+            this.setState({
+              data: json,
+            })
+          });
+      }
+
+      render() {
       return (
         <div className="container">
             <div className="currency">
@@ -23,28 +40,22 @@ class List extends Component {
                             <tr>
                                 <th></th>
                                 <th>Last Price</th>
-                                <th>High</th>
-                                <th>Low</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">Bitcoin</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <th scope="row">Bitcoin/USD</th>
+                                <td>{this.state.data.BTC_USD}$</td>
                             </tr>
                             <tr>
-                                <th scope="row">SP500</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
+                                <th scope="row">USD/EUR</th>
+                                <td>{this.state.data.USD_EUR}$</td>
                             </tr>
                             <tr>
-                                <th scope="row">$CAD</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
+                                <th scope="row">USD/CAD</th>
+                                <td>{this.state.data.USD_CAD}$</td>
                                 </tr>
                         </tbody>
                     </Table>
