@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line, } from 'recharts';
+import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line, ResponsiveContainer} from 'recharts';
 
 class Charts extends Component {
 
@@ -40,22 +40,30 @@ class Charts extends Component {
     }
 
     render() {
-        
+      const divStyle = {
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+      };
       return (
-        <div>
-          <LineChart width={730} height={250} data={this.state.data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="price" stroke="#8884d8" />
-          </LineChart>
+        <div style={divStyle}>
+            <div style={{width: '100%', height: '50%'}}>
+            <ResponsiveContainer>
+            <LineChart width={942} height={325} data={this.state.data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis type="number" domain={['dataMin - 0.0001', 'auto']} />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="price" stroke="#8884d8" />
+            </LineChart>
+            </ResponsiveContainer>
+            </div>
         </div>
       );
     } 
 }
   
   export default Charts;
-
