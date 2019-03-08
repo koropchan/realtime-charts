@@ -10,23 +10,30 @@ class List extends Component {
       constructor(props) {
         super(props);
         this.state = {
-          data: [],
+            currencyData: [],
+            weatherData: [],
+            newsData: []
         };
       }
 
       componentDidMount() {
 
-        var url = 'https://free.currencyconverterapi.com/api/v6/convert?q=USD_CAD,BTC_USD,EUR_USD&compact=ultra&apiKey=95c86d5989f092030892';
-        fetch(url)
-          .then(res => res.json())
-          .then(json => {
-            this.setState({
-              data: json,
-            })
-          });
+        Promise.all([
+            fetch('https://free.currencyconverterapi.com/api/v6/convert?q=USD_CAD,BTC_USD,EUR_USD&compact=ultra&apiKey=95c86d5989f092030892'),
+            fetch('http://api.openweathermap.org/data/2.5/group?id=6167865,6173331,6077243&units=metric&appid=64876bc29180def9bf49f6f871432415')
+        ])
+        .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+        .then(([data1, data2]) => this.setState({
+            currencyData: data1, 
+            weatherData: data2
+        }));
+        
       }
 
       render() {
+          if (!this.state.weatherData.list){
+              return null;
+          }
       return (
         <div className="container">
             <div className="currency">
@@ -47,15 +54,15 @@ class List extends Component {
                         <tbody>
                             <tr onClick={this.props.onClickUsd_btc}>
                                 <th scope="row">Bitcoin/USD</th>
-                                <td>{this.state.data.BTC_USD}$</td>
+                                <td>{Math.round(this.state.currencyData.BTC_USD)}$</td>
                             </tr>
                             <tr onClick={this.props.onClickEur_usd}>
                                 <th scope="row">EUR/USD</th>
-                                <td>{this.state.data.EUR_USD}$</td>
+                                <td>{this.state.currencyData.EUR_USD}$</td>
                             </tr>
                             <tr onClick={this.props.onClickUsd_cad}>
                                 <th scope="row">USD/CAD</th>
-                                <td>{this.state.data.USD_CAD}$</td>
+                                <td>{this.state.currencyData.USD_CAD}$</td>
                                 </tr>
                         </tbody>
                     </Table>
@@ -79,21 +86,21 @@ class List extends Component {
                         <tbody>
                             <tr>
                                 <th scope="row">Toronto</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <td>{Math.round(this.state.weatherData.list[0].main.temp)}C</td>
+                                <td>{Math.round(this.state.weatherData.list[0].main.humidity)}%</td>
+                                <td>{Math.round(this.state.weatherData.list[0].wind.speed)}m/s</td>
                             </tr>
                             <tr>
                                 <th scope="row">Vancouver</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
+                                <td>{Math.round(this.state.weatherData.list[1].main.temp)}C</td>
+                                <td>{Math.round(this.state.weatherData.list[1].main.humidity)}%</td>
+                                <td>{Math.round(this.state.weatherData.list[1].wind.speed)}m/s</td>
                             </tr>
                             <tr>
                                 <th scope="row">Montreal</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
+                                <td>{Math.round(this.state.weatherData.list[2].main.temp)}C</td>
+                                <td>{Math.round(this.state.weatherData.list[2].main.humidity)}%</td>
+                                <td>{Math.round(this.state.weatherData.list[2].wind.speed)}m/s</td>
                                 </tr>
                         </tbody>
                     </Table>
@@ -109,30 +116,18 @@ class List extends Component {
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>Last Price</th>
-                                <th>High</th>
-                                <th>Low</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">Bitcoin</th>
                                 <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
                             </tr>
                             <tr>
-                                <th scope="row">SP500</th>
                                 <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
                             </tr>
                             <tr>
-                                <th scope="row">$CAD</th>
                                 <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                                </tr>
+                            </tr>
                         </tbody>
                     </Table>
                 </div>
@@ -141,5 +136,5 @@ class List extends Component {
       );
     }
   }
-  
+
   export default List;
