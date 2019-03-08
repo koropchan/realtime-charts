@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line, ResponsiveContainer} from 'recharts';
 
-class Charts extends Component {
+class BtcUsd extends Component {
 
     constructor(props) {
         super(props);
@@ -18,7 +18,7 @@ class Charts extends Component {
         var formattedCurrentDate = currentDate.format('YYYY-MM-DD');
         var formattedWeekAgoDate = weekAgoDate.format('YYYY-MM-DD');
 
-        var url = `https://free.currencyconverterapi.com/api/v6/convert?q=USD_CAD&compact=ultra&date=${formattedWeekAgoDate}&endDate=${formattedCurrentDate}&apiKey=95c86d5989f092030892`;
+        var url = `https://free.currencyconverterapi.com/api/v6/convert?q=BTC_USD&compact=ultra&date=${formattedWeekAgoDate}&endDate=${formattedCurrentDate}&apiKey=95c86d5989f092030892`;
         
         fetch(url)
           .then(res => res.json())
@@ -26,17 +26,15 @@ class Charts extends Component {
             this.setState({data: [d]});
 
             var dataArray = [];
-            for (const prop in this.state.data['0'].USD_CAD){
+            for (const prop in this.state.data[0].BTC_USD){
                 dataArray.push({
                             date: prop,
-                            price: this.state.data[0].USD_CAD[prop].toString()
+                            price: this.state.data[0].BTC_USD[prop].toString()
                             })
             };
             this.setState({data: dataArray});
           })
           .catch(error => console.log(error))
-          
-          
     }
 
     render() {
@@ -66,4 +64,4 @@ class Charts extends Component {
     } 
 }
   
-  export default Charts;
+  export default BtcUsd;

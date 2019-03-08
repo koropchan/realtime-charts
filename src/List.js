@@ -16,7 +16,7 @@ class List extends Component {
 
       componentDidMount() {
 
-        var url = 'https://free.currencyconverterapi.com/api/v6/convert?q=USD_CAD,BTC_USD,USD_EUR&compact=ultra&apiKey=95c86d5989f092030892';
+        var url = 'https://free.currencyconverterapi.com/api/v6/convert?q=USD_CAD,BTC_USD,EUR_USD&compact=ultra&apiKey=95c86d5989f092030892';
         fetch(url)
           .then(res => res.json())
           .then(json => {
@@ -45,15 +45,15 @@ class List extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr onClick={this.props.onClickUsd_btc}>
                                 <th scope="row">Bitcoin/USD</th>
                                 <td>{this.state.data.BTC_USD}$</td>
                             </tr>
-                            <tr>
-                                <th scope="row">USD/EUR</th>
-                                <td>{this.state.data.USD_EUR}$</td>
+                            <tr onClick={this.props.onClickEur_usd}>
+                                <th scope="row">EUR/USD</th>
+                                <td>{this.state.data.EUR_USD}$</td>
                             </tr>
-                            <tr>
+                            <tr onClick={this.props.onClickUsd_cad}>
                                 <th scope="row">USD/CAD</th>
                                 <td>{this.state.data.USD_CAD}$</td>
                                 </tr>
