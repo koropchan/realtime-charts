@@ -90,13 +90,13 @@ class List extends Component {
                                 <td>{Math.round(this.state.weatherData.list[0].main.humidity)}%</td>
                                 <td>{Math.round(this.state.weatherData.list[0].wind.speed)}m/s</td>
                             </tr>
-                            <tr>
+                            <tr onClick={this.props.onClickVancouver}>
                                 <th scope="row">Vancouver</th>
                                 <td>{Math.round(this.state.weatherData.list[1].main.temp)}C</td>
                                 <td>{Math.round(this.state.weatherData.list[1].main.humidity)}%</td>
                                 <td>{Math.round(this.state.weatherData.list[1].wind.speed)}m/s</td>
                             </tr>
-                            <tr>
+                            <tr onClick={this.props.onClickMontreal}>
                                 <th scope="row">Montreal</th>
                                 <td>{Math.round(this.state.weatherData.list[2].main.temp)}C</td>
                                 <td>{Math.round(this.state.weatherData.list[2].main.humidity)}%</td>

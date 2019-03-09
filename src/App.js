@@ -5,6 +5,8 @@ import UsdCad from './components/usdcad';
 import EurUsd from './components/eurusd';
 import BtcUsd from './components/btcusd';
 import Toronto from './components/toronto';
+import Vancouver from './components/vancouver';
+import Montreal from './components/montreal';
 
 class App extends Component {
   constructor() {
@@ -16,6 +18,8 @@ class App extends Component {
     this.handleChangeBtcUsd = this.handleChangeBtcUsd.bind(this);
     this.handleChangeEurUsd = this.handleChangeEurUsd.bind(this);
     this.handleChangeToronto = this.handleChangeToronto.bind(this);
+    this.handleChangeVancouver = this.handleChangeVancouver.bind(this);
+    this.handleChangeMontreal = this.handleChangeMontreal.bind(this);
   }
   
   handleChangeUsdCad() {
@@ -30,6 +34,12 @@ class App extends Component {
   handleChangeToronto() {
     this.setState({showComponent: <Toronto />});
   }
+  handleChangeVancouver() {
+    this.setState({showComponent: <Vancouver />});
+  }
+  handleChangeMontreal() {
+    this.setState({showComponent: <Montreal />});
+  }
 
 
  
@@ -42,6 +52,8 @@ class App extends Component {
                 onClickUsd_btc={this.handleChangeBtcUsd}
                 onClickEur_usd={this.handleChangeEurUsd}
                 onClickToronto={this.handleChangeToronto}
+                onClickVancouver={this.handleChangeVancouver}
+                onClickMontreal={this.handleChangeMontreal}
           />
         </div>
         <div className="right-container">
