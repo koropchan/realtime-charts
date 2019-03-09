@@ -40,7 +40,7 @@ class List extends Component {
         <div className="container">
             <div className="currency">
                 <div className="head">
-                    <div className="text">Currency and Stocks</div>
+                    <div className="text">Currency</div>
                     <img src={currencies} alt="icon"/>
                 </div>
                 <div className="body">
@@ -49,8 +49,6 @@ class List extends Component {
                             <tr>
                                 <th></th>
                                 <th>Last Price</th>
-                                <th></th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
