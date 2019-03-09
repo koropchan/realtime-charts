@@ -84,7 +84,7 @@ class List extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr onClick={this.props.onClickToronto}>
                                 <th scope="row">Toronto</th>
                                 <td>{Math.round(this.state.weatherData.list[0].main.temp)}C</td>
                                 <td>{Math.round(this.state.weatherData.list[0].main.humidity)}%</td>

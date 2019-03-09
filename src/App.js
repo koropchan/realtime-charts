@@ -4,6 +4,7 @@ import List from './List';
 import UsdCad from './components/usdcad';
 import EurUsd from './components/eurusd';
 import BtcUsd from './components/btcusd';
+import Toronto from './components/toronto';
 
 class App extends Component {
   constructor() {
@@ -14,6 +15,7 @@ class App extends Component {
     this.handleChangeUsdCad = this.handleChangeUsdCad.bind(this);
     this.handleChangeBtcUsd = this.handleChangeBtcUsd.bind(this);
     this.handleChangeEurUsd = this.handleChangeEurUsd.bind(this);
+    this.handleChangeToronto = this.handleChangeToronto.bind(this);
   }
   
   handleChangeUsdCad() {
@@ -24,6 +26,9 @@ class App extends Component {
   }
   handleChangeEurUsd() {
     this.setState({showComponent: <EurUsd />});
+  }
+  handleChangeToronto() {
+    this.setState({showComponent: <Toronto />});
   }
 
 
@@ -36,6 +41,7 @@ class App extends Component {
           <List onClickUsd_cad={this.handleChangeUsdCad}
                 onClickUsd_btc={this.handleChangeBtcUsd}
                 onClickEur_usd={this.handleChangeEurUsd}
+                onClickToronto={this.handleChangeToronto}
           />
         </div>
         <div className="right-container">
