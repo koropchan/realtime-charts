@@ -52,7 +52,7 @@ a {
     color: rgb(221, 156, 17);
 }
 tr:hover{
-    color: aliceblue;
+    background-color: rgba(68, 91, 112, 0.589);
     border: 1px solid black;
     cursor: pointer;
 }
