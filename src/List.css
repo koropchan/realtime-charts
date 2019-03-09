@@ -42,6 +42,17 @@ img {
     height: 100%;
     width: 100%
 }
+
 .table td {
     text-align: center;   
  }
+
+a {
+    text-decoration: none;
+    color: rgb(221, 156, 17);
+}
+tr:hover{
+    color: aliceblue;
+    border: 1px solid black;
+    cursor: pointer;
+}

@@ -20,12 +20,14 @@ class List extends Component {
 
         Promise.all([
             fetch('https://free.currencyconverterapi.com/api/v6/convert?q=USD_CAD,BTC_USD,EUR_USD&compact=ultra&apiKey=95c86d5989f092030892'),
-            fetch('http://api.openweathermap.org/data/2.5/group?id=6167865,6173331,6077243&units=metric&appid=64876bc29180def9bf49f6f871432415')
+            fetch('http://api.openweathermap.org/data/2.5/group?id=6167865,6173331,6077243&units=metric&appid=64876bc29180def9bf49f6f871432415'),
+            fetch('http://webhose.io/filterWebContent?token=150527d2-ec5a-4435-8196-638b495edd0c&format=json&sort=crawled&q=language%3Aenglish%20site%3Accn.com')
         ])
-        .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
-        .then(([data1, data2]) => this.setState({
+        .then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json(), res3.json()]))
+        .then(([data1, data2, data3]) => this.setState({
             currencyData: data1, 
-            weatherData: data2
+            weatherData: data2,
+            newsData: data3
         }));
         
       }
@@ -120,13 +122,13 @@ class List extends Component {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Mark</td>
+                                <td><a href={this.state.newsData.posts[0].url} target="_blank" rel="noopener noreferrer">{this.state.newsData.posts[0].title}</a></td>
                             </tr>
                             <tr>
-                                <td>Jacob</td>
+                                <td><a href={this.state.newsData.posts[1].url} target="_blank" rel="noopener noreferrer">{this.state.newsData.posts[1].title}</a></td>
                             </tr>
                             <tr>
-                                <td>Larry</td>
+                                <td><a href={this.state.newsData.posts[2].url} target="_blank" rel="noopener noreferrer">{this.state.newsData.posts[2].title}</a></td>
                             </tr>
                         </tbody>
                     </Table>
@@ -138,3 +140,10 @@ class List extends Component {
   }
 
   export default List;
+
+
+//   .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+//   .then(([data1, data2]) => this.setState({
+//       currencyData: data1, 
+//       weatherData: data2
+//   }));
