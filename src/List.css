@@ -34,9 +34,12 @@ img {
 
 .text {
     flex-basis: 97%;
-    font-family: 'Laila', serif;
+    font-family: 'Sniglet', cursive;
     text-transform: uppercase;
+    letter-spacing: 10px;
     text-align: center;
+    color: rgb(136, 132, 216);
+
 }
 
 .table {

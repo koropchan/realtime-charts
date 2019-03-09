@@ -126,7 +126,7 @@ class List extends Component {
                                 <td><a href={this.state.newsData.posts[1].url} target="_blank" rel="noopener noreferrer">{this.state.newsData.posts[1].title}</a></td>
                             </tr>
                             <tr>
-                                <td><a href={this.state.newsData.posts[2].url} target="_blank" rel="noopener noreferrer">{this.state.newsData.posts[2].title}</a></td>
+                                <td><a href={this.state.newsData.posts[3].url} target="_blank" rel="noopener noreferrer">{this.state.newsData.posts[3].title}</a></td>
                             </tr>
                         </tbody>
                     </Table>
