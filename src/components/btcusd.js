@@ -13,6 +13,7 @@ class BtcUsd extends Component {
 
     componentDidMount() {
         
+        //Using 'Moment' dependecy to get current date and format it, also substract from date to get date range
         var currentDate = moment();
         var weekAgoDate = moment().subtract(7, 'days');
         var formattedCurrentDate = currentDate.format('YYYY-MM-DD');
@@ -25,6 +26,7 @@ class BtcUsd extends Component {
           .then(d => {
             this.setState({data: [d]});
 
+            //Formatting JSON data for easier use
             var dataArray = [];
             for (const prop in this.state.data[0].BTC_USD){
                 dataArray.push({
@@ -38,6 +40,7 @@ class BtcUsd extends Component {
     }
 
     render() {
+
       const divStyle = {
           width: '100%',
           height: '100%',
@@ -45,6 +48,7 @@ class BtcUsd extends Component {
           justifyContent: 'center',
           alignItems: 'center'
       };
+
       return (
         <div style={divStyle}>
             <div style={{width: '100%', height: '50%'}}>

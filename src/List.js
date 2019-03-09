@@ -18,6 +18,7 @@ class List extends Component {
 
       componentDidMount() {
 
+        //Catching data from all source to set state with our JSON data
         Promise.all([
             fetch('https://free.currencyconverterapi.com/api/v6/convert?q=USD_CAD,BTC_USD,EUR_USD&compact=ultra&apiKey=95c86d5989f092030892'),
             fetch('http://api.openweathermap.org/data/2.5/group?id=6167865,6173331,6077243&units=metric&appid=64876bc29180def9bf49f6f871432415'),
@@ -33,9 +34,12 @@ class List extends Component {
       }
 
       render() {
+
+          //Making sure data from JSON loads first 
           if (!this.state.weatherData.list){
               return null;
           }
+          
       return (
         <div className="container">
             <div className="currency">
@@ -138,10 +142,3 @@ class List extends Component {
   }
 
   export default List;
-
-
-//   .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
-//   .then(([data1, data2]) => this.setState({
-//       currencyData: data1, 
-//       weatherData: data2
-//   }));
