@@ -12,7 +12,7 @@ class Vancouver extends Component {
 
     componentDidMount() {
 
-        var url = `http://api.openweathermap.org/data/2.5/forecast?id=6173331&appid=64876bc29180def9bf49f6f871432415`;
+        var url = `https://api.openweathermap.org/data/2.5/forecast?id=6173331&appid=64876bc29180def9bf49f6f871432415`;
         
         fetch(url)
           .then(res => res.json())

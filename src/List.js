@@ -21,8 +21,8 @@ class List extends Component {
         //Catching data from all source to set state with our JSON data
         Promise.all([
             fetch('https://free.currencyconverterapi.com/api/v6/convert?q=USD_CAD,BTC_USD,EUR_USD&compact=ultra&apiKey=95c86d5989f092030892'),
-            fetch('http://api.openweathermap.org/data/2.5/group?id=6167865,6173331,6077243&units=metric&appid=64876bc29180def9bf49f6f871432415'),
-            fetch('http://webhose.io/filterWebContent?token=150527d2-ec5a-4435-8196-638b495edd0c&format=json&sort=crawled&q=language%3Aenglish%20site%3Accn.com')
+            fetch('https://api.openweathermap.org/data/2.5/group?id=6167865,6173331,6077243&units=metric&appid=64876bc29180def9bf49f6f871432415'),
+            fetch('https://webhose.io/filterWebContent?token=150527d2-ec5a-4435-8196-638b495edd0c&format=json&sort=crawled&q=language%3Aenglish%20site%3Accn.com')
         ])
         .then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json(), res3.json()]))
         .then(([data1, data2, data3]) => this.setState({
