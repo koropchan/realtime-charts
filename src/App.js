@@ -14,30 +14,24 @@ class App extends Component {
     this.state = {
       showComponent: false
     }
-    this.handleChangeUsdCad = this.handleChangeUsdCad.bind(this);
-    this.handleChangeBtcUsd = this.handleChangeBtcUsd.bind(this);
-    this.handleChangeEurUsd = this.handleChangeEurUsd.bind(this);
-    this.handleChangeToronto = this.handleChangeToronto.bind(this);
-    this.handleChangeVancouver = this.handleChangeVancouver.bind(this);
-    this.handleChangeMontreal = this.handleChangeMontreal.bind(this);
   }
   
-  handleChangeUsdCad() {
+  handleChangeUsdCad = () => {
     this.setState({showComponent: <UsdCad />});
   }
-  handleChangeBtcUsd() {
+  handleChangeBtcUsd = () => {
     this.setState({showComponent: <BtcUsd />});
   }
-  handleChangeEurUsd() {
+  handleChangeEurUsd = () => {
     this.setState({showComponent: <EurUsd />});
   }
-  handleChangeToronto() {
+  handleChangeToronto = () => {
     this.setState({showComponent: <Toronto />});
   }
-  handleChangeVancouver() {
+  handleChangeVancouver = () => {
     this.setState({showComponent: <Vancouver />});
   }
-  handleChangeMontreal() {
+  handleChangeMontreal = () => {
     this.setState({showComponent: <Montreal />});
   }
 
